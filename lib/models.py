@@ -16,10 +16,13 @@ engine = create_engine('sqlite:///migrations_test.db')
 
 Base = declarative_base()
 
+
 class Student(Base):
-    __tablename__ = 'students'
+    __tablename__ = 'scholars'
 
     id = Column(Integer(), primary_key=True)
+    new_column_name = Column(String) #RENAMED COLUNM
+    old_column_name = column_property(new_column_name)
     name = Column(String(), index=True)
     email = Column(String(55))
     grade = Column(Integer())
